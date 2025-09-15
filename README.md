@@ -1,85 +1,70 @@
 # 📊 Customer Churn Prediction with Machine Learning in R
 
-This repository contains an **end-to-end machine learning pipeline** in **R** for predicting customer churn using the **Telco Customer Churn dataset**. The project demonstrates data preprocessing, feature engineering, model training, hyperparameter tuning, class imbalance handling (SMOTE), and advanced visualization techniques.
+This repository provides an **end-to-end machine learning pipeline** in **R** for predicting customer churn using the **Telco Customer Churn dataset**.  
+It covers data preprocessing, feature engineering, model training, hyperparameter tuning, class imbalance handling (SMOTE), and advanced visualization.
 
 ---
 
 ## 📖 Overview
 
-Customer churn is a critical business challenge, especially in subscription-based industries.  
-This study applies **supervised machine learning models** to predict whether a customer will churn, leveraging:
+Customer churn is a major challenge in subscription-based businesses.  
+This study applies **supervised ML models** to predict churn with:
 
-- **Comprehensive preprocessing & cleaning**  
-- **Feature engineering to capture customer behavior**  
-- **Multiple ML algorithms (Logistic Regression, KNN, CART, Random Forest, SVM, MLP, XGBoost)**  
-- **Class imbalance solutions (SMOTE oversampling)**  
-- **Model interpretability via class maps and feature importance**  
+- Thorough **preprocessing & cleaning**  
+- **Feature engineering** to capture behavior & risk  
+- Multiple algorithms: Logistic Regression, KNN, CART, Random Forest, MLP, SVM, XGBoost  
+- **Class imbalance solutions** (SMOTE)  
+- **Interpretability tools**: feature importance & class maps  
 
 ---
 
 ## 🔁 Methodology
 
 ### 🔹 Data Preprocessing
-- Removal of duplicates, irrelevant features (`customerID`)  
-- Conversion of categorical features into numeric form (label encoding, one-hot encoding)  
-- Handling of missing values and outliers  
-- Standardization of numerical variables  
+- Remove duplicates, irrelevant features (`customerID`)  
+- Encode categorical features (label/one-hot)  
+- Handle missing values & outliers  
+- Standardize numerical variables  
 
 ### 🔹 Feature Engineering
-- **Contract commitment**: Engaged vs. non-engaged customers  
-- **Service bundles**: Total subscribed services, streaming usage flags  
-- **Risk signals**: Customers without protection plans, young non-engaged users  
-- **Payment habits**: Auto-payment indicator  
-- **Tenure segmentation**: Bucketing into yearly intervals  
+- Contract commitment (engaged vs. non-engaged)  
+- Service bundles (streaming, total services)  
+- Risk signals (no protection plans, young + non-engaged)  
+- Payment habits (auto-payment indicator)  
+- Tenure segmentation (yearly buckets)  
 
-### 🔹 Model Training
-- Data split: **64% training**, **16% validation**, **20% testing**  
-- Trained & evaluated models:
-  - Logistic Regression  
-  - k-Nearest Neighbors (KNN)  
-  - Decision Tree (CART)  
-  - Random Forest  
-  - Multi-Layer Perceptron (MLP)  
-  - Support Vector Machine (SVM)  
-  - XGBoost (baseline + tuned)  
+### 🔹 Model Training & Evaluation
+- Data split: **64% train**, **16% validation**, **20% test**  
+- Algorithms: Logistic Regression, KNN, CART, Random Forest, MLP, SVM, XGBoost  
+- Metrics: Accuracy, Precision, Recall, F1-score, ROC Curve & AUC  
 
-### 🔹 Evaluation Metrics
-- Accuracy  
-- Precision  
-- Recall  
-- F1-score  
-- ROC Curve & AUC  
-
-### 🔹 Class Imbalance Handling
-- **SMOTE (Synthetic Minority Oversampling Technique)** applied to balance churn (26.5%) vs non-churn (73.5%).  
+### 🔹 Class Imbalance
+- **SMOTE oversampling** to balance churn (26.5%) vs. non-churn (73.5%)  
 
 ### 🔹 Visualization
 - Correlation heatmaps  
-- ROC curves for model comparison  
+- ROC curves for comparison  
 - Feature importance (XGBoost)  
-- Silhouette & class maps  
-- Quasi residual plots for key features  
+- Advanced plots (class maps, quasi residuals, silhouette, mosaic)  
 
 ---
 
 ## 📂 Dataset
 
-- **Source**: [Telco Customer Churn Dataset (Kaggle)](https://www.kaggle.com/blastchar/telco-customer-churn)  
+- **Source**: [Kaggle – Telco Customer Churn](https://www.kaggle.com/blastchar/telco-customer-churn)  
 - **Size**: 7,043 customers, 21 features  
-- **Target Variable**: `Churn` (Yes = 1, No = 0)  
-- **Class Balance**:  
-  - 73.5% Non-churn (5,174 customers)  
-  - 26.5% Churn (1,869 customers)  
+- **Target**: `Churn` (Yes = 1, No = 0)  
+- **Distribution**: 73.5% Non-churn, 26.5% Churn  
 
 ---
 
 ## 🚀 Installation
 
-### Required Software
+### Software
 - **R ≥ 4.0**
-- **RStudio** recommended for ease of use  
+- **RStudio** recommended  
 
-### Required R Packages
+### R Packages
 
 ```r
 packages <- c(
@@ -89,7 +74,8 @@ packages <- c(
   "reshape2", "DMwR2", "smotefamily"
 )
 install.packages(setdiff(packages, rownames(installed.packages())))
-```
+ ```
+
 ## 🎯 Usage
 
 Clone this repository:
@@ -98,81 +84,77 @@ Clone this repository:
 git clone https://github.com/your-username/telco-churn-r.git
 cd telco-churn-r
 ```
-Open R or RStudio.
 
-Run the script:
+Open R or RStudio and run:
 
-```source("churn_analysis.R")```
+```r
+source("churn_analysis.R")
+```
 
-The script will:
-- Clean and preprocess data
-- Engineer new features
-- Train multiple ML models
-- Plot ROC curves & performance comparisons
-- Tune XGBoost with cross-validation
-- Apply SMOTE balancing and evaluate improvements
+This will:
+- Preprocess and clean data  
+- Engineer features  
+- Train models & tune XGBoost  
+- Plot ROC curves and feature importance  
+- Apply SMOTE and compare results  
+
+---
 
 ## 📁 Project Structure
 
 ```bash
-├── churn_analysis.R             # Main script (all steps from preprocessing to evaluation)
+├── churn_analysis.R             # Main script
 ├── data/
-│   └── Telco-Customer-Churn.csv # Dataset (not included, download separately)
-├── README.md                    # Project documentation
-
+│   └── Telco-Customer-Churn.csv # Dataset (download separately)
+├── README.md                    # Documentation
 ```
+## 📊 Results
 
-## 📊 Key Results
+### XGBoost (Tuned, Test Set)
+- **AUC**: 0.856  
+- **Accuracy**: 81%  
+- **Precision**: 0.666  
+- **Recall**: 0.537  
+- **F1**: 0.594  
 
-**Model Performance (Test Set, Original Data)**  
-**XGBoost (tuned):**
+### XGBoost + SMOTE (Balanced Training)
+- **AUC**: 0.843  
+- **Precision**: 0.549  
+- **Recall**: 0.722  
+- **F1**: 0.624  
 
-- AUC ≈ **0.856**  
-- Accuracy ≈ **81%**  
-- Precision ≈ **0.666**  
-- Recall ≈ **0.537**  
-- F1 ≈ **0.594**  
+➡️ SMOTE significantly improves recall (better detection of churners) at the cost of some precision.  
 
-**With SMOTE (50/50 balanced training set)**  
-**XGBoost + SMOTE:**
+---
 
-- AUC ≈ **0.843**  
-- Precision ≈ **0.549**  
-- Recall ≈ **0.722**  
-- F1 ≈ **0.624**  
-
-➡️ **SMOTE improves recall significantly**, making the model better at detecting churners, though with some precision tradeoff.
+## 💡 Why XGBoost?
+- Outperforms Logistic Regression, KNN, CART, Random Forest, MLP, and SVM  
+- Handles nonlinear interactions effectively  
+- Built-in **feature importance**  
+- Robust to overfitting with proper tuning  
+- With SMOTE, offers the **best recall** for churn detection  
 
 ---
 
 ## 📈 Visualizations
 
-The script generates:
-
-- ROC curves comparing all models  
-- Feature importance rankings from XGBoost  
-- Silhouette and stacked plots for classification behavior  
-- Class maps for churn vs non-churn  
-- Quasi residual plots (Tenure, MonthlyCharges, TotalCharges)  
+The script produces:
+- ROC curves across models  
+- Feature importance (XGBoost)  
+- Advanced diagnostics:  
+  - **PAC (Probability of Alternative Class):** Measures how close each prediction is to the opposite class, highlighting uncertain cases.  
+  - **Silhouette plots (classification confidence):** Indicate how confidently the model classifies each instance; values near 1 mean high certainty, values near 0 suggest uncertainty, and negative values point to likely misclassifications.  
+  - **Mosaic confusion plots:** A visual representation of the confusion matrix that makes it easier to see strengths and weaknesses, especially for minority classes.  
+  - **Quasi residual plots (`Tenure`, `MonthlyCharges`, `TotalCharges`):** Show residuals against key features to reveal systematic errors or patterns where the model underperforms.  
+  - **Class maps (PCA + Mahalanobis distance for misclassifications):** Plot instances in 2D space to visualize relationships between predicted and actual classes, making misclassifications and outliers more interpretable.  
 
 ---
 
 ## 🔬 Experimental Design
+- **Split**: 64% train / 16% validation / 20% test  
+- **Preprocessing**: encoding, scaling  
+- **Hyperparameter tuning**: Grid search (XGBoost)  
+- **Evaluation**: AUC, F1, precision, recall, accuracy  
 
-- **Data split**: 64% train, 16% validation, 20% test  
-- **Preprocessing**: Label encoding, one-hot encoding, scaling  
-- **Hyperparameter tuning**: Grid search for XGBoost  
-- **Evaluation protocol**: Multiple metrics (AUC, F1, precision, recall, accuracy)  
 
----
 
-## 💡 Key Insights
-
-- Longer contract terms and auto-payments reduce churn risk.  
-- Customers without protection plans or with high monthly charges are more churn-prone.  
-- Tenure is a strong predictor — longer-tenure customers churn less.  
-- Initial models suffered from high false negatives (missed churners), which is costly in practice.  
-- XGBoost outperforms traditional models in predictive power.  
-- SMOTE boosts recall, making the model more effective at identifying churners, even if precision drops slightly.  
-
-  
