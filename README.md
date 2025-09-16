@@ -67,20 +67,14 @@ This study applies **supervised ML models** to predict churn with:
 ### R Packages
 
 ```r
-packages <- c(
-  "dplyr", "ggplot2", "caret", "corrplot", "pROC", 
-  "rpart", "randomForest", "StatMatch", "e1071", 
-  "xgboost", "nnet", "class", "classmap", "Matrix", 
-  "reshape2", "DMwR2", "smotefamily"
-)
 install.packages(setdiff(packages, rownames(installed.packages())))
- ```
+```
 
 ## 📦 R Dependencies
 Run the following in R to install all required packages:
 ```r
 source("requirements.R")
-
+```
 ## 🎯 Usage
 
 Clone this repository:
@@ -108,11 +102,13 @@ This will:
 ## 📁 Project Structure
 
 ```bash
-├── churn_analysis.R             # Main script
+├── Telco-Customer-Churn.R       # Main script
+├── requirements.R               # R package dependencies
 ├── data/
 │   └── Telco-Customer-Churn.csv # Dataset (download separately)
 ├── README.md                    # Documentation
 ```
+
 ## 📊 Results
 
 ### XGBoost (Tuned, Test Set)
