@@ -79,14 +79,14 @@ source("requirements.R")
 
 Clone this repository:
 
-```bash
+```
 git clone https://github.com/your-username/telco-churn-r.git
 cd telco-churn-r
 ```
 
 Open R or RStudio and run:
 
-```r
+```
 source("churn_analysis.R")
 ```
 
@@ -101,7 +101,7 @@ This will:
 
 ## 📁 Project Structure
 
-```bash
+```
 ├── Telco-Customer-Churn.R       # Main script
 ├── requirements.R               # R package dependencies
 ├── data/
