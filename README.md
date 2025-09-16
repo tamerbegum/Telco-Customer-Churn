@@ -76,6 +76,11 @@ packages <- c(
 install.packages(setdiff(packages, rownames(installed.packages())))
  ```
 
+## 📦 R Dependencies
+Run the following in R to install all required packages:
+```r
+source("requirements.R")
+
 ## 🎯 Usage
 
 Clone this repository:
