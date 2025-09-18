@@ -80,7 +80,7 @@ source("requirements.R")
 Clone this repository:
 
 ```
-git clone https://github.com/your-username/telco-churn-r.git
+git clone https://github.com/tamerbegum/telco-churn-r.git
 cd telco-churn-r
 ```
 
